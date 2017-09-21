@@ -24,7 +24,15 @@ def test_card_has_value():
 
 
 def test_add_cards():
-    assert 5 == Card('spade', 2) + Card('spade', 3)
+    assert 5 == Card('spade', 2) + Card('club', 3)
+
+
+def test_compare():
+    assert True == (Card('spade', 'Q') == Card('club', 'J'))
+
+
+def test_greater_than():
+    assert True == (Card('spade', 'A') > Card('club', 4))
 
 
 def test_deck():
