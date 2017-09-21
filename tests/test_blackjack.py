@@ -3,19 +3,25 @@ import pytest
 
 
 def test_card_has_suit():
-    card = Card('diamond')
+    card = Card('diamond', 2)
     assert hasattr(card, 'suit')
 
 
 def test_card_has_valid_suit():
     with pytest.raises(ValueError):
-        Card('somestupidsuit')
+        Card('somestupidsuit', 2)
 
-        c = Card('spade')
+    c = Card('spade', 2)
+    assert c.suit == 'spade'
 
-        assert c.suit == 'spade'
+
+def test_card_has_value():
+    king_of_spades = Card('spade', 'K')
+    queen_of_clubs = Card('club', 'Q')
+
+    assert king_of_spades.value == 'K'
+    assert king_of_spades.value != 'Q'
 
 
 def test_deck():
     pass
-
