@@ -23,5 +23,9 @@ def test_card_has_value():
     assert king_of_spades.value != 'Q'
 
 
+def test_add_cards():
+    assert 5 == Card('spade', 2) + Card('spade', 3)
+
+
 def test_deck():
     pass
