@@ -63,3 +63,17 @@ class Deck:
     def shuffle(self):
         random.shuffle(self.cards)
 
+    def deal_hand(self):
+        return self._deal(), self._deal()
+
+    def deal_card(self):
+        return self._deal()
+
+    def _deal(self):
+        """
+        :return: a card from our Deck
+        """
+
+        return next(self)
+
+
