@@ -47,6 +47,19 @@ class Deck:
             for value in list(range(2, 11)) + ['J', 'Q', 'K', 'A']:
                 self.cards.append(Card(suit, value))
 
+    def __len__(self):
+        return len(self.cards)
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        try:
+            card = self.cards.pop(0)
+            return card
+        except IndexError:
+            raise StopIteration("No more cards!")
+
     def shuffle(self):
         random.shuffle(self.cards)
 
