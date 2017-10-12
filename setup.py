@@ -11,6 +11,6 @@ setup(name="blackjack",
       packages=find_packages(exclude=['tests']),
       include_package_data=True,
       install_requires=requirements,
-      entry_points={'console_scripts': ["blackjack.cli:main"],
+      entry_points={'console_scripts': ["blackjack=blackjack.cli:main"],
                     }
       )
