@@ -93,7 +93,7 @@ def test_deal_hand():
     assert card1 != card2
 
     card1, card2 = deck.deal_card(), deck.deal_card()
-    
+
     assert card1 != card2
 
 
