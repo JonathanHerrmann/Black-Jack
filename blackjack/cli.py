@@ -1,14 +1,20 @@
 import argparse
 
 
-def get_parser():
-    parser = argparse.ArgumentParser()
-    subparser = parser.add_subparsers(dest="cmd")
+from blackjack.server import BlackjackServer
+from blackjack.client import BlackjackClient
 
-    server = subparser.add_parser("serve", description="Start a blackjack game server")
-    client = subparser.add_parser("join", description="Join a blackjack server")
+
+def get_parser():  # pragma: no coverage
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers(dest="cmd")
+
+    server = subparsers.add_parser("serve", description="Start a blackjack game server")
+    client = subparsers.add_parser("join", description="Join a Blackjack server")
 
     client.add_argument("server", type=str, help="The server to join")
+
+    return parser
 
 
 def main():
@@ -17,5 +23,9 @@ def main():
     if not options.cmd:
         parser.print_help()
 
-    if options.cmd == "server":
-        with BlackjackServer()
+    if options.cmd == 'serve':
+        with BlackjackServer() as server:
+            server.serve_forever()
+
+    if options.cmd == 'join':
+        BlackjackClient(options.server).run()
